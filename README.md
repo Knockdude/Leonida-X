@@ -18,7 +18,7 @@ En resumen, el juego aporta su código y sus recursos; Leonida X aporta la carga
 
 - Leonida: gracias por existir, aunque fue por cierto tiempo, fuiste un pilar muy grande para poder crear este proyecto, muchas gracias :)
 
-Grand Theft Auto and all related names are trademarks of their owners. This project is not affiliated with or endorsed by them.
+Grand Theft Auto y todos los nombres relacionados son marcas comerciales de sus respectivos propietarios. Este proyecto no está afiliado a ellos ni cuenta con su respaldo.
 
 ## Licencia
 
