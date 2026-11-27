@@ -1,0 +1,40 @@
+{
+  "about": [
+    "LEONIDA_* switches the run scripts set, by graphics card (scripts/leonida-settings.ps1).",
+    "Every profile whose match fits the PC's card is applied, in this order; a later one overrides an earlier one.",
+    "match: vendor (nvidia, amd, intel), min_vram_mb, max_vram_mb, name (a wildcard on the card's name); empty matches every card.",
+    "opt_in: true: never applied by its match, only when LEONIDA_PROFILE names it.",
+    "A value of null unsets the switch. LEONIDA_* switches left in the PowerShell window by earlier runs are cleared first (LEONIDA_KEEP_WINDOW=1 keeps them; paths, LEONIDA_PROFILE and LEONIDA_LOG always stay).",
+    "Add a profile only with a measurement: the card, the CPU, the scene and the frame times before and after.",
+    "Your own changes go in gpu-profiles.local.json (same form, applied after this file; git ignores it).",
+    "LEONIDA_PROFILE=<name>[,<name>...] applies base and those profiles whatever the card; LEONIDA_PROFILE=none applies none."
+  ],
+  "profiles": [
+    {
+      "name": "base",
+      "match": {},
+      "measured": "victory-gta6 on an RTX 4070 (docs/fork-notes.md); kept on an RTX 3080 12 GB with a Ryzen 7 7800X3D, 2026-11-26",
+      "env": {
+        "LEONIDA_ASYNC_SUBMIT": "1",
+        "LEONIDA_QUEUE2": "1",
+        "LEONIDA_INDIRECT_WINDOW": "1",
+        "LEONIDA_COPY_PLAIN": "1",
+        "LEONIDA_JOIN_PARTS": "1",
+        "LEONIDA_BACK_OWN_VIEW": "1",
+        "LEONIDA_INDIRECT_GATHER": "1",
+        "LEONIDA_CARD_REHASH_RUNS": "1"
+      }
+    },
+    {
+      "name": "card-windows",
+      "opt_in": true,
+      "match": {},
+      "measured": "RTX 3080 12 GB, Ryzen 7 7800X3D, first rooms, 2026-11-26: usual frame 169-173 -> 149-158 ms, card time 103 -> 88 ms; but the windows take about 3.7 GB of the card and textures picked by index wait for room (host copies of textures 12,142 -> about 6,500): textures stay black. Opt-in until that is solved.",
+      "env": {
+        "LEONIDA_CARD_WINDOWS_MB": "3072",
+        "LEONIDA_WINDOW_UPLOAD": "1",
+        "LEONIDA_TEXTURE_ROOM_PERCENT": "70"
+      }
+    }
+  ]
+}
